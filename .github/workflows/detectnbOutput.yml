@@ -14,6 +14,15 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: Ensure Clean Jupyter Notebooks
-        uses: ResearchSoftwareActions/EnsureCleanNotebooksAction@0.1
+      - name: Setup python
+        id: python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+      - name: Jupyter notebook installs
+        run: pip install jupyterlab
+      - name: Clear all outputs cells
+        run: jupyter nbconvert --clear-output --inplace Enron_Query_Elasticsearch-1-1.ipynb
+        shell: bash
             
