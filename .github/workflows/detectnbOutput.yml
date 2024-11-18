@@ -3,7 +3,7 @@ name: OutputScan
 # Controls when the workflow will run
 on:
   push:
-  pull_request:
+  pull_request_target:
     branches:
       - develop
       - staging
@@ -14,4 +14,4 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: hmarr/auto-approve-action@v4
+      - uses: kennysphan/EnsureCleanNotebooksAction@ver1
