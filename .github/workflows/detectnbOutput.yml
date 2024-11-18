@@ -1,15 +1,17 @@
-name: OutputScan
+name: ClearOutput
 
 # Controls when the workflow will run
 on:
   push:
+    branches-ignore:
+      - main
   pull_request_target:
     branches:
       - develop
       - staging
   workflow_dispatch:
 jobs:
-  auto-approve:
+  Clear-notebook-Output:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,12 +23,3 @@ jobs:
       - name: Clear all outputs cells
         run: jupyter nbconvert --to=notebook --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --output=Enron_Query_Elasticsearch-1-1 Enron_Query_Elasticsearch-1-1.ipynb
         shell: bash
-      - name:
-        run: |
-            date > generated.txt
-            git config user.name github-actions
-            git config user.email github-actions@github.com
-            git add Enron_Query_Elasticsearch-1-1.ipynb
-            git commit -m "Clear output"
-            git push
-            
