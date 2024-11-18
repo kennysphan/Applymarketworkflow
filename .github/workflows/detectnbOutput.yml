@@ -15,5 +15,5 @@ jobs:
       pull-requests: write
     steps:
       - name: Ensure Clean Jupyter Notebooks
-        uses: ResearchSoftwareActions/EnsureCleanNotebooksAction@1.1
+        uses: ResearchSoftwareActions/EnsureCleanNotebooksAction@0.1
             
