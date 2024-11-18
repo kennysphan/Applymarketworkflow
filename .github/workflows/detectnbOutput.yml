@@ -9,7 +9,10 @@ on:
       - staging
   workflow_dispatch:
 jobs:
-  OutputandExecutioncheck:
-    runs-on: ubuntu-18.04
+  auto-approve:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    if: github.actor == 'dependabot[bot]'
     steps:
-      - uses: actions/checkout@v3
+      - uses: hmarr/auto-approve-action@v4
